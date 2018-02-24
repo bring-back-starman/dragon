@@ -1,0 +1,13 @@
+import { createSelector } from 'reselect';
+import get from 'lodash/fp/get';
+
+const select{{ ucFirst name }} = get('{{ name }}');
+
+const makeSelectValue = () => createSelector(
+  select{{ ucFirst name }},
+  get('value'),
+);
+
+export {
+  makeSelectValue,
+};
