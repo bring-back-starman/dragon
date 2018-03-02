@@ -1,16 +1,28 @@
 /* eslint-disable no-underscore-dangle */
-import appReducer from 'store/reducers';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { routerMiddleware } from 'react-router-redux';
 
-const composeEnhancers =
-  process.env.NODE_ENV !== 'production' &&
-  typeof window === 'object' &&
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : compose;
+import createReducer from 'store/reducers';
 
-const enhancer = composeEnhancers(applyMiddleware());
+export default function configureStore(initialState = {}, history) {
+  const appReducer = createReducer();
 
-const store = createStore(appReducer, enhancer);
+  const middlewares = [
+    // App middlewares
 
-export default store;
+    // Package middlewares
+    routerMiddleware(history),
+  ];
+
+  const enhancers = [applyMiddleware(...middlewares)];
+
+  // use Redux DevTools Chrome extension if available
+  const composeEnhancers =
+    process.env.NODE_ENV !== 'production' &&
+    typeof window === 'object' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      : compose;
+
+  return createStore(appReducer, initialState, composeEnhancers(...enhancers));
+}

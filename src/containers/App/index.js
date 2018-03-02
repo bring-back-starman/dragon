@@ -1,19 +1,28 @@
 // @flow
 import React, { PureComponent } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { ConnectedRouter as Router } from 'react-router-redux';
+import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
-import store from 'store/configureStore';
+
+import configureStore from 'store/configureStore';
+import HomePage from 'containers/HomePage';
+
+const initialState = {};
+const history = createBrowserHistory();
+const store = configureStore(initialState, history);
 
 class App extends PureComponent<void> {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <Router history={history}>
           <Switch>
-            <Route exact path="/" />
+            <Redirect exact to="/missions/upcoming" from="/" />
+            <Route path="/missions/:filter" component={HomePage} />
             <Route />
           </Switch>
-        </BrowserRouter>
+        </Router>
       </Provider>
     );
   }
