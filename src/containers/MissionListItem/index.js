@@ -8,16 +8,12 @@ import MissionItem from 'components/MissionItem';
 
 class MissionListItem extends React.Component {
   static propTypes = {
-    mission: PropTypes.object,
+    item: PropTypes.object,
   };
 
   render() {
-    return <MissionItem mission={this.props.mission} />;
+    return <MissionItem mission={this.props.item} />;
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  mission: makeSelectMissionFromId(),
-});
-
-export default connect(mapStateToProps)(MissionListItem);
+export default MissionListItem;

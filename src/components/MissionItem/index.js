@@ -13,11 +13,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const MissionItem = ({ mission }) => (
+const MissionItem = ({ item: mission }) => (
   <Wrapper>
     <p>{mission.name}</p>
-    <p>{mission.vehicle}</p>
-    <p>{moment(mission.date).format('HH:mm')}</p>
+    <p>{moment(mission.date.from).format('HH:mm')}</p>
     <p>{mission.status}</p>
   </Wrapper>
 );

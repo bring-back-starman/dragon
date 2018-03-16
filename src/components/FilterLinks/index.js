@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Link from 'containers/FilterLinks/Link';
-import Wrapper from 'containers/FilterLinks/Wrapper';
+import Link from 'components/FilterLinks/Link';
+import Wrapper from 'components/FilterLinks/Wrapper';
 
 class FilterLinks extends React.Component {
   render() {
@@ -13,7 +13,5 @@ class FilterLinks extends React.Component {
     );
   }
 }
-
-FilterLinks.propTypes = {};
 
 export default FilterLinks;

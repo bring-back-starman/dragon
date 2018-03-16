@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "apollo-boost": "^0.1.1",
+    "apollo-cache-inmemory": "^1.1.11",
+    "apollo-client": "^2.2.7",
+    "apollo-link-http": "^1.5.3",
     "classnames": "^2.2.5",
     "graphql": "^0.13.1",
+    "graphql-tag": "^2.8.0",
     "history": "^4.7.2",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",

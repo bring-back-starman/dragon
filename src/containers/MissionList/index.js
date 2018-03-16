@@ -1,19 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
-import { compose, graphql } from 'react-apollo';
-
-import { makeSelectFilteredMissionsIds } from 'store/missions/selectors';
-
-import MissionListItem from 'containers/MissionListItem';
+import { graphql } from 'react-apollo';
 
 import List from 'components/List';
 import Section from 'components/Section';
-import FilterLinks from 'containers/FilterLinks';
+import FilterLinks from 'components/FilterLinks';
 import MissionListWrapper from 'components/MissionListWrapper';
-import { MISSIONS_QUERY } from './graphql';
+import { MISSIONS_QUERY } from './queries';
+import MissionItem from '../../components/MissionItem';
 
 class MissionList extends React.Component {
   static propTypes = {
@@ -33,21 +27,20 @@ class MissionList extends React.Component {
       <Section>
         <FilterLinks />
         <List
-          items={this.props.missionsIds}
-          component={MissionListItem}
+          items={this.props.data.missions}
+          component={MissionItem}
           wrapper={MissionListWrapper}
+          keyPath="id"
         />
       </Section>
     );
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  missionsIds: makeSelectFilteredMissionsIds(),
-});
-
-const withConnect = connect(mapStateToProps);
-
-export default compose(withRouter, withConnect, graphql(MISSIONS_QUERY))(
-  MissionList,
-);
+export default graphql(MISSIONS_QUERY, {
+  options: ({ type }) => ({
+    variables: {
+      type: type.toUpperCase(),
+    },
+  }),
+})(MissionList);

@@ -19,7 +19,7 @@ class HomePage extends React.PureComponent<Props, State> {
     return (
       <Container>
         <Header>Bring Back Starman</Header>
-        <MissionList />
+        <MissionList type={this.props.match.params.type} />
       </Container>
     );
   }

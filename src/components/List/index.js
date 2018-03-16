@@ -13,8 +13,8 @@ function getItemKey(item, keyPath) {
 }
 
 const List = ({ items, component: Component, keyPath, wrapper }) => {
-  if (!items) {
-    return <Component />;
+  if (!items || (Array.isArray(items) && !items.length)) {
+    return null;
   }
 
   const Wrapper = wrapper || React.Fragment;
