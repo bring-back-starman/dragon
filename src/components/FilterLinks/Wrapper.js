@@ -5,7 +5,6 @@ const Wrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  min-width: 600px;
   padding: 1rem;
 `;
 

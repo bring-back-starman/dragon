@@ -15,10 +15,11 @@ import registerServiceWorker from './registerServiceWorker';
 import 'index.css';
 
 // Pass your GraphQL endpoint to uri
+const link = new HttpLink({
+  uri: 'http://localhost:3000/graphql',
+});
 const client = new ApolloClient({
-  link: new HttpLink({
-    uri: 'http://localhost:3000/graphql',
-  }),
+  link,
   cache: new InMemoryCache(),
 });
 const history = createBrowserHistory();

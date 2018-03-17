@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 const MISSIONS_QUERY = gql`
-  query MissionQuery($type: String) {
-    missions(type: $type) {
+  query MissionsQuery($type: MissionType) {
+    missions(type: $type, page: 1, limit: 20) {
       id
       name
       launchNumber

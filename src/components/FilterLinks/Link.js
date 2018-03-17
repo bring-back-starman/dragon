@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-const activeColor = 'blue';
+const activeColor = '#2A3E5B';
 const inactiveColor = 'transparent';
 
 const Button = styled(NavLink)`
   width: 50%;
   text-align: center;
-  border: 1px solid gray;
+  border: 1px solid #6982a6;
   background: ${inactiveColor};
+  color: rgba(255, 255, 255, 0.7);
   padding: 8px 0;
-  color: inherit;
   text-decoration: none;
 
   &:active,
@@ -28,7 +28,6 @@ const Button = styled(NavLink)`
 
   &.active {
     background: ${activeColor};
-    color: white;
   }
 `;
 
