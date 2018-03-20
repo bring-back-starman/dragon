@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Section = styled.section`
-  padding: 1rem auto;
+  padding: 1rem;
 
   &:first-child {
     margin-top: 0;

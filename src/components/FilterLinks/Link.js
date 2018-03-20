@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-const activeColor = '#2A3E5B';
-const inactiveColor = 'transparent';
-
-const Button = styled(NavLink)`
-  width: 50%;
+const Link = styled(NavLink)`
   text-align: center;
-  border: 1px solid #6982a6;
-  background: ${inactiveColor};
-  color: rgba(255, 255, 255, 0.7);
-  padding: 8px 0;
+  border: 1px solid ${props => props.theme.colors.primary};
+  background: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.dark};
+  padding: 8px 20px;
   text-decoration: none;
+  flex: 1;
+
+  @media (min-width: 700px) {
+    flex: 0;
+  }
 
   &:active,
   &:focus {
@@ -27,8 +28,9 @@ const Button = styled(NavLink)`
   }
 
   &.active {
-    background: ${activeColor};
+    background: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.white};
   }
 `;
 
-export default Button;
+export default Link;

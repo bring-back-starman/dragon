@@ -6,17 +6,11 @@ const Header = styled.header`
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  font-size: 1.12rem;
 
-  background-color: ${props => props.theme.colors.primary};
-  color: rgba(255, 255, 255, 0.7);
+  background-color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.dark};
+  box-shadow: 0 1px 5px ${props => props.theme.colors.light};
 `;
-
-Header.defaultProps = {
-  theme: {
-    colors: {
-      primary: '#48A3F3',
-    },
-  },
-};
 
 export default Header;

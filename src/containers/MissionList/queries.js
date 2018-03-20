@@ -13,6 +13,8 @@ const MISSIONS_QUERY = gql`
       }
       outcome
       description
+      launchVideo
+      patchUrl
     }
   }
 `;
