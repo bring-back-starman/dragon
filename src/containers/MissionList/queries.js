@@ -11,7 +11,7 @@ const MISSIONS_QUERY = gql`
         to
         type
       }
-      missionOutcome
+      outcome
       description
     }
   }
