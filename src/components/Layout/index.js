@@ -1,4 +1,4 @@
-import styled from 'styled-components/typings/styled-components';
+import styled from 'styled-components';
 
 const Layout = styled.div`
   background-color: ${props => props.theme.colors.secondary};
