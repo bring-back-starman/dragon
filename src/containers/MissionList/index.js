@@ -41,6 +41,7 @@ export default graphql(MISSIONS_QUERY, {
   options: ({ type }) => ({
     variables: {
       type: type.toUpperCase(),
+      order: type === 'past' ? 'DESC' : 'ASC',
     },
   }),
 })(MissionList);

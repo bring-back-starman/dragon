@@ -23,27 +23,37 @@ const Row = styled.div`
 `;
 
 const Name = styled.span`
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   color: #343434;
   font-weight: 600;
-  margin-bottom: 15px;
-  flex: 1 1 auto;
-`;
-
-const Outcome = styled.div`
-  flex: 0 0 auto;
-  margin-left: 5px;
-  color: ${props => props.theme.colors.grey};
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
 `;
 
 const Date = styled.div`
-  font-size: 1.25rem;
+  font-size: 0.825rem;
   margin-bottom: 15px;
   color: ${props => props.theme.colors.dark};
+  flex: 1;
+`;
+
+const Outcome = styled.div`
+  margin-left: 5px;
+  font-size: 0.75rem;
+  color: ${props => props.theme.colors.grey};
+`;
+
+const Description = styled.div`
+  font-size: 0.7rem;
+  text-align: justify;
+  line-height: 1rem;
+  color: ${props => props.theme.colors.grey};
+  margin-bottom: 20px;
 `;
 
 const Video = styled.div`
-  font-size: 0.8rem;
+  font-size: 0.625rem;
   margin-bottom: 15px;
 `;
 
@@ -54,25 +64,17 @@ const A = styled.a`
   border-radius: 2px;
 `;
 
-const Description = styled.div`
-  font-size: 0.9rem;
-  text-align: justify;
-  line-height: 1.25rem;
-  color: ${props => props.theme.colors.grey};
-  margin-bottom: 15px;
-`;
-
 const MissionItem = ({ item: mission, ...props }) => (
   <Wrapper>
+    <Name>{mission.name}</Name>
     <Row>
-      <Name>{mission.name}</Name>
+      <Date>
+        <Icon icon={faClock} /> {new DateRange(mission.date).humanize()}
+      </Date>
       {props.match.params.type === 'past' && (
         <Outcome>{mission.outcome}</Outcome>
       )}
     </Row>
-    <Date>
-      <Icon icon={faClock} /> {new DateRange(mission.date).humanize()}
-    </Date>
     <Description>{mission.description}</Description>
     {mission.launchVideo && (
       <Video>
