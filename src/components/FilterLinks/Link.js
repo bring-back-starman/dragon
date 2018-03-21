@@ -20,11 +20,11 @@ const Link = styled(NavLink)`
   }
 
   &:nth-child(1) {
-    border-radius: 10px 0 0 10px;
+    border-radius: ${props => props.radius} 0 0 ${props => props.radius};
   }
 
   &:nth-child(2) {
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 ${props => props.radius} ${props => props.radius} 0;
   }
 
   &.active {
@@ -32,5 +32,9 @@ const Link = styled(NavLink)`
     color: ${props => props.theme.colors.white};
   }
 `;
+
+Link.defaultProps = {
+  radius: '3px',
+};
 
 export default Link;
